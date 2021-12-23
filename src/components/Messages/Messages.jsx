@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { close, handle_obsolete } from "../../slices/MessagesSlice";
@@ -21,7 +22,7 @@ function Linear({ message }) {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress(oldProgress => {
+      setProgress((oldProgress) => {
         if (oldProgress === 0) {
           clearInterval(timer);
           dispatch(close(message));
@@ -46,7 +47,7 @@ function Linear({ message }) {
 
 // A component that displays error messages
 function Messages() {
-  const messages = useSelector(state => state.messages);
+  const messages = useSelector((state) => state.messages);
   const dispatch = useDispatch();
   // Returns a function that can closes a message
   const handleClose = function (message) {
@@ -59,7 +60,11 @@ function Messages() {
       <div>
         {messages.items.map((message, index) => {
           return (
-            <Snackbar open={message.open} key={index} anchorOrigin={{ vertical: "top", horizontal: "center" }}>
+            <Snackbar
+              open={message.open}
+              key={index}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
               <Alert
                 variant="filled"
                 icon={false}
@@ -78,7 +83,7 @@ function Messages() {
       </div>
     </div>
   );
-  return res;
+  // return res;
 }
 // Invoke repetedly obsolete messages deletion (should be in slice file but I cannot find a way to access the store from there)
 window.setInterval(() => {

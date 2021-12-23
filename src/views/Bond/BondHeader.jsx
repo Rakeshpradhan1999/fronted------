@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import BondLogo from "../../components/BondLogo";
@@ -7,7 +8,13 @@ import { ReactComponent as SettingsIcon } from "../../assets/icons/settings.svg"
 import { ReactComponent as XIcon } from "../../assets/icons/x.svg";
 import useEscape from "../../hooks/useEscape";
 
-function BondHeader({ bond, slippage, recipientAddress, onRecipientAddressChange, onSlippageChange }) {
+function BondHeader({
+  bond,
+  slippage,
+  recipientAddress,
+  onRecipientAddressChange,
+  onSlippageChange,
+}) {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
